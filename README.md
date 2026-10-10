@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AN Digital: sitio web
 
-## Getting Started
+Sitio de presentación de **AN Digital**: tarjetas de fidelización para Apple Wallet y Google Wallet, tarjetas NFC para reseñas, landing pages, aplicaciones web, mantenimiento web y agentes de IA para llamadas.
 
-First, run the development server:
+- Bilingüe: español (`/es`) e inglés (`/en`). La raíz `/` detecta el idioma del navegador.
+- Soporte con URL propia: `/soporte` (español) y `/support` (inglés).
+- Estilo Liquid Glass: vidrio translúcido, brillo que sigue al puntero, refracción real en Chrome/Edge.
+
+## Stack
+
+| Pieza | Uso |
+|---|---|
+| Next.js 16 (App Router) + TypeScript | Páginas estáticas, rutas por idioma, SEO |
+| Tailwind CSS 4 | Tokens de color y utilidades |
+| Motion 12 | Tarjeta 3D, sellos, menú que se transforma, selector de idioma |
+| Lenis | Scroll suave (se apaga si el visitante pidió menos movimiento) |
+| Anybody + Jost (alojadas en el proyecto) | Titulares y texto |
+
+## Direcciones del sitio
+
+| Dirección | Página |
+|---|---|
+| `/` | Redirige a `/es` o `/en` según el idioma del navegador |
+| `/es`, `/en` | Inicio |
+| `/soporte` → `/es/soporte` | Soporte en español |
+| `/support` → `/en/support` | Soporte en inglés |
+| `/privacidad`, `/privacy` | Privacidad |
+| `/sitemap.xml`, `/robots.txt` | Para Google |
+
+## Cómo editar lo más común
+
+- **Textos (español):** `src/i18n/dictionaries/es.ts`
+- **Textos (inglés):** `src/i18n/dictionaries/en.ts`
+- **Teléfono, WhatsApp y correo de soporte:** `src/lib/contact.ts`
+- **Colores:** bloque `@theme` al inicio de `src/app/globals.css`
+- **Imagen al compartir el link (WhatsApp/Facebook):** `public/brand/og-es.png` y `og-en.png`
+- **Logo:** `public/brand/an-digital-logo.jpg`
+
+Los tiempos de respuesta y el horario de soporte están en `support.times` y `support.hours` de cada diccionario. Ajústalos a lo que de verdad puedas cumplir.
+
+## Trabajar en tu computadora
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # compila como en producción
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Publicar en Vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Entra a [vercel.com](https://vercel.com) con tu cuenta de GitHub.
+2. **Add New → Project** y elige el repositorio `an-digital-web`.
+3. Deja todo como viene (Vercel detecta Next.js) y pulsa **Deploy**.
+4. Cada vez que subas cambios a GitHub, Vercel publica la nueva versión solo.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Cuando conectes un dominio propio, agrega la variable de entorno `NEXT_PUBLIC_SITE_URL` (por ejemplo `https://andigital.com`) en **Settings → Environment Variables** para que el sitemap y las imágenes al compartir usen ese dominio. Si quieres `soporte.tudominio.com`, agrega ese subdominio en Vercel y redirígelo a `/es/soporte`.
