@@ -1,17 +1,9 @@
 import type { NextConfig } from "next";
 
+// Exportación estática: Dokploy la sirve con nginx (ver Dockerfile)
 const nextConfig: NextConfig = {
-  cacheComponents: true,
-  partialPrefetching: true,
-  poweredByHeader: false,
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
-  },
+  output: "export",
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
