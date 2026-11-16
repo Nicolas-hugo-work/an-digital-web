@@ -6,3 +6,16 @@ next-env.d.ts
 
 # design references (local only)
 reference/
+
+# Apple Wallet / firmas: NUNCA al repo
+*.key
+*.pem
+*.cer
+*.csr
+*.p12
+.env
+.env*
+!.env.example
+
+# Vercel CLI (vínculo local del proyecto)
+.vercel

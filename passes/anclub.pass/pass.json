@@ -1,0 +1,19 @@
+{
+  "formatVersion": 1,
+  "passTypeIdentifier": "pass.com.andigital.anclub",
+  "teamIdentifier": "CFU383PYQ7",
+  "organizationName": "AN DIGITAL",
+  "description": "Tarjeta de fidelización AN Club",
+  "logoText": "AN Club",
+  "backgroundColor": "rgb(10, 18, 38)",
+  "foregroundColor": "rgb(238, 240, 250)",
+  "labelColor": "rgb(125, 227, 244)",
+  "sharingProhibited": true,
+  "storeCard": {
+    "headerFields": [],
+    "primaryFields": [],
+    "secondaryFields": [],
+    "auxiliaryFields": [],
+    "backFields": []
+  }
+}
